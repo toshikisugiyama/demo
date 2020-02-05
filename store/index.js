@@ -56,6 +56,17 @@ export const getters = {
   getDesserts: state => state.desserts
 }
 
-// export const mutations = {
-//   addDrinks(state,)
-// }
+export const mutations = {
+  addDrinks (state, data) {
+    state.drinks.push(data.drink)
+  },
+  addPastas (state, data) {
+    state.pastas.push(data.pasta)
+  },
+  addRices (state, data) {
+    state.rices.push(data.rice)
+  },
+  addDesserts (state, data) {
+    state.desserts.push(data.dessert)
+  }
+}
