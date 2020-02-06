@@ -13,7 +13,9 @@
         @click.stop="rightDrawer = !rightDrawer"
         icon
       >
-        <v-icon>mdi-menu</v-icon>
+        <v-icon color="#EC5016">
+          mdi-menu
+        </v-icon>
       </v-btn>
     </v-app-bar>
     <v-content>
@@ -82,5 +84,8 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  .v-toolbar{
+    color: $concept-color;
+  }
 }
 </style>
