@@ -38,6 +38,14 @@
           </v-list-item-action>
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
+        <v-list-item
+          v-for="page in pages"
+          :key="page.name"
+        >
+          <nuxt-link :to="page.name">
+            {{ page.name }}
+          </nuxt-link>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-footer
@@ -57,16 +65,18 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
-      items: [
+      pages: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
+          name: 'top',
+          path: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          name: 'concept',
+          path: '/concept'
+        },
+        {
+          name: 'menu',
+          path: '/menu'
         }
       ],
       miniVariant: false,
