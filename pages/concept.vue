@@ -9,7 +9,7 @@
       sm8
       md6
     >
-      <v-container class="concept">
+      <v-container fluid class="concept">
         <v-row class="mb-5 justify-center concept__title">
           <h1>concept</h1>
         </v-row>
@@ -19,7 +19,7 @@
             <p>ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。</p>
           </v-col>
           <v-col md="6">
-            <v-parallax :src="interiorImg1"></v-parallax>
+            <v-parallax :src="interiorImg1" alt="interior"></v-parallax>
           </v-col>
         </v-row>
         <v-row class="flex-column flex-md-row" tag="section">
@@ -28,7 +28,7 @@
             <p>ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。</p>
           </v-col>
           <v-col md="6">
-            <v-parallax :src="interiorImg2"></v-parallax>
+            <v-parallax :src="interiorImg2" alt="interior"></v-parallax>
           </v-col>
         </v-row>
       </v-container>
@@ -37,8 +37,8 @@
 </template>
 
 <script>
-import interiorImg1 from '@/assets/images/brick-wall-1834784_640.jpg'
-import interiorImg2 from '@/assets/images/bar-918541_640.jpg'
+import interiorImg1 from '@/assets/images/brick-wall-1834784_640.svg'
+import interiorImg2 from '@/assets/images/bar-918541_640.svg'
 export default {
   data () {
     return {
