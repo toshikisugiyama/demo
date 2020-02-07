@@ -41,7 +41,7 @@
 export default {
   data () {
     return {
-      title: this.$route.path.slice(1)
+      title: this.$route.path.slice(1).replace(/\/$/, '')
     }
   },
   computed: {
