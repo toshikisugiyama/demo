@@ -39,6 +39,10 @@ export const state = () => ({
     {
       name: 'news',
       path: '/news'
+    },
+    {
+      name: 'access',
+      path: '/access'
     }
   ],
   menus: [
