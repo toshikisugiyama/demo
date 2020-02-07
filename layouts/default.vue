@@ -38,14 +38,14 @@
           </v-list-item-action>
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
-        <v-list-item
-          v-for="page in pages"
-          :key="page.name"
-        >
-          <nuxt-link :to="page.name">
-            {{ page.name }}
+        <v-list-item-group>
+          <nuxt-link
+            :to="page.path"
+            v-for="page in pages"
+            :key="page.name">
+            <v-list-item v-text="page.name.toUpperCase()" />
           </nuxt-link>
-        </v-list-item>
+        </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
     <v-footer
@@ -65,24 +65,15 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
-      pages: [
-        {
-          name: 'top',
-          path: '/'
-        },
-        {
-          name: 'concept',
-          path: '/concept'
-        },
-        {
-          name: 'menu',
-          path: '/menu'
-        }
-      ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
       title: 'logo'
+    }
+  },
+  computed: {
+    pages () {
+      return this.$store.getters.getPages
     }
   }
 }
@@ -94,6 +85,9 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  a, a:hover {
+    text-decoration: none;
+  }
   .v-toolbar{
     color: $concept-color;
   }
