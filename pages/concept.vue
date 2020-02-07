@@ -36,7 +36,7 @@ import interiorImg2 from '@/assets/images/bar-918541_640.svg'
 export default {
   data () {
     return {
-      title: this.$route.path.slice(1),
+      title: this.$route.path.slice(1).replace(/\/$/, ''),
       interiorImg1,
       interiorImg2
     }

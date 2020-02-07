@@ -27,8 +27,8 @@
 export default {
   data () {
     return {
-      title: this.$route.path.slice(1, 5),
-      articleId: this.$route.path.slice(6)
+      title: this.$route.path.slice(1, 5).replace(/\/$/, ''),
+      articleId: this.$route.path.slice(6).replace(/\/$/, '')
     }
   },
   computed: {
