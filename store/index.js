@@ -1,4 +1,44 @@
+import drinkImg from '@/assets/images/wine-890370_640.svg'
+import pastaImg from '@/assets/images/pasta-2571391_640.svg'
+import riceImg from '@/assets/images/paella-2246527_640.svg'
+import dessertImg from '@/assets/images/cheesecake-3761196_640.svg'
 export const state = () => ({
+  pages: [
+    {
+      name: 'top',
+      path: '/'
+    },
+    {
+      name: 'concept',
+      path: '/concept'
+    },
+    {
+      name: 'menu',
+      path: '/menu'
+    }
+  ],
+  menus: [
+    {
+      name: 'drink',
+      src: drinkImg,
+      path: '/menu/drink'
+    },
+    {
+      name: 'pasta',
+      src: pastaImg,
+      path: '/menu/pasta'
+    },
+    {
+      name: 'rice',
+      src: riceImg,
+      path: '/menu/rice'
+    },
+    {
+      name: 'dessert',
+      src: dessertImg,
+      path: '/menu/dessert'
+    }
+  ],
   drinks: [
     {
       id: 1,
@@ -50,6 +90,8 @@ export const state = () => ({
 })
 
 export const getters = {
+  getPages: state => state.pages,
+  getMenus: state => state.menus,
   getDrinks: state => state.drinks,
   getPastas: state => state.pastas,
   getRices: state => state.rices,
