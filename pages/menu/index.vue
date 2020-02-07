@@ -1,5 +1,5 @@
 <template>
- <v-layout
+  <v-layout
     column
     justify-center
     align-center
@@ -19,7 +19,7 @@
               <v-img
                 :src="menu.src"
               />
-              <v-card-title v-text="menu.name.toUpperCase()"  class="justify-center" />
+              <v-card-title v-text="menu.name.toUpperCase()" class="justify-center" />
             </v-card>
           </nuxt-link>
         </v-col>
