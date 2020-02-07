@@ -7,7 +7,9 @@
       app
       flat
     >
-      <v-toolbar-title v-text="title" />
+      <nuxt-link v-if="this.$route.path !== '/'" to="/">
+        <v-toolbar-title v-text="title.toUpperCase()" />
+      </nuxt-link>
       <v-spacer />
       <v-btn
         @click.stop="rightDrawer = !rightDrawer"
@@ -30,19 +32,19 @@
       fixed
     >
       <v-list>
-        <v-list-item @click.native="right = !right">
+        <v-list-item @click.native="rightDrawer = !rightDrawer">
           <v-list-item-action>
             <v-icon light>
-              mdi-repeat
+              mdi-arrow-right
             </v-icon>
           </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
         <v-list-item-group>
           <nuxt-link
             :to="page.path"
             v-for="page in pages"
-            :key="page.name">
+            :key="page.name"
+          >
             <v-list-item v-text="page.name.toUpperCase()" />
           </nuxt-link>
         </v-list-item-group>
@@ -80,16 +82,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+a, a:hover {
+  text-decoration: none;
+}
 #app{
   background-image: url('../assets/images/wine-541922_1920.svg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  a, a:hover {
-    text-decoration: none;
-  }
+  background-attachment: fixed;
   .v-toolbar{
     color: $concept-color;
+    &__title{
+      color: $concept-color
+    }
   }
 }
 </style>

@@ -3,6 +3,26 @@ import pastaImg from '@/assets/images/pasta-2571391_640.svg'
 import riceImg from '@/assets/images/paella-2246527_640.svg'
 import dessertImg from '@/assets/images/cheesecake-3761196_640.svg'
 export const state = () => ({
+  news: [
+    {
+      id: '1',
+      title: '○○入荷しました！',
+      contents: '○○入荷しました！○○入荷しました！○○入荷しました！○○入荷しました！○○入荷しました！○○入荷しました！○○入荷しました！○○入荷しました！○○入荷しました！○○入荷しました！○○入荷しました！○○入荷しました！○○入荷しました！○○入荷しました！○○入荷しました！',
+      date: '2020年 2月 1日'
+    },
+    {
+      id: '2',
+      title: '明けましておめでとうございます',
+      contents: '明けましておめでとうございます明けましておめでとうございます明けましておめでとうございます明けましておめでとうございます明けましておめでとうございます明けましておめでとうございます明けましておめでとうございます明けましておめでとうございます明けましておめでとうございます明けましておめでとうございます明けましておめでとうございます明けましておめでとうございます明けましておめでとうございます明けましておめでとうございます',
+      date: '2020年 1月 1日'
+    },
+    {
+      id: '3',
+      title: '年末年始の営業日のお知らせ',
+      contents: '年末年始の営業日のお知らせ年末年始の営業日のお知らせ年末年始の営業日のお知らせ年末年始の営業日のお知らせ年末年始の営業日のお知らせ年末年始の営業日のお知らせ年末年始の営業日のお知らせ年末年始の営業日のお知らせ年末年始の営業日のお知らせ年末年始の営業日のお知らせ年末年始の営業日のお知らせ年末年始の営業日のお知らせ年末年始の営業日のお知らせ',
+      date: '2019年 12月 1日'
+    }
+  ],
   pages: [
     {
       name: 'top',
@@ -15,6 +35,10 @@ export const state = () => ({
     {
       name: 'menu',
       path: '/menu'
+    },
+    {
+      name: 'news',
+      path: '/news'
     }
   ],
   menus: [
@@ -90,6 +114,7 @@ export const state = () => ({
 })
 
 export const getters = {
+  getNews: state => state.news,
   getPages: state => state.pages,
   getMenus: state => state.menus,
   getDrinks: state => state.drinks,
