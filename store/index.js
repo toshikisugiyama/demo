@@ -114,7 +114,17 @@ export const state = () => ({
       name: 'レアチーズケーキ',
       price: '500'
     }
-  ]
+  ],
+  storeInfo: {
+    logo: 'logo',
+    conceptColor: '#EC5016',
+    openingTime: '17:00~25:00',
+    closedDay: '月曜日',
+    postNum: '〇〇〇-〇〇〇〇',
+    address: '〇〇県〇〇市〇〇 〇丁目〇番地〇',
+    telNum: '〇〇〇-〇〇〇〇-〇〇〇〇',
+    email: '〇〇〇〇@email.com'
+  }
 })
 
 export const getters = {
@@ -124,7 +134,8 @@ export const getters = {
   getDrinks: state => state.drinks,
   getPastas: state => state.pastas,
   getRices: state => state.rices,
-  getDesserts: state => state.desserts
+  getDesserts: state => state.desserts,
+  getStoreInfo: state => state.storeInfo
 }
 
 export const mutations = {

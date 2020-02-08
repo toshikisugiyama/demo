@@ -6,24 +6,23 @@
   >
     <v-container fluid class="concept">
       <v-row class="mb-5 justify-center concept__title">
-        <h1>{{ title.toUpperCase() }}</h1>
+        <v-col v-text="title.toUpperCase()" tag="h1" class="text-center" />
       </v-row>
-      <v-row class="flex-column flex-md-row" tag="section">
-        <v-col md="6">
-          <h2>コンセプト1</h2>
-          <p>ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。</p>
+      <v-row
+        v-for="n in 2"
+        :key="n"
+        tag="section"
+        class="flex-column flex-md-row mb-5"
+      >
+        <v-col :class="{'order-md-2': n%2===0}" md="6">
+          <v-col v-text="concept.title + n" tag="h2" class="12" />
+          <v-col v-text="concept.content" tag="p" cols="12" />
         </v-col>
         <v-col md="6">
-          <v-img :src="interiorImg1" alt="interior" />
-        </v-col>
-      </v-row>
-      <v-row class="flex-column flex-md-row" tag="section">
-        <v-col md="6" class="order-md-2">
-          <h2>コンセプト2</h2>
-          <p>ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。</p>
-        </v-col>
-        <v-col md="6">
-          <v-img :src="interiorImg2" alt="interior" />
+          <v-img
+            :src="n%2===0?interiorImg2:interiorImg1"
+            alt="interior"
+          />
         </v-col>
       </v-row>
     </v-container>
@@ -38,7 +37,11 @@ export default {
     return {
       title: this.$route.path.slice(1).replace(/\/$/, ''),
       interiorImg1,
-      interiorImg2
+      interiorImg2,
+      concept: {
+        title: 'コンセプト',
+        content: 'ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。'
+      }
     }
   }
 }
