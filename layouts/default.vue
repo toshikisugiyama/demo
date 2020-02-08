@@ -7,17 +7,20 @@
       app
       flat
     >
-      <v-container>
-        <v-row>
-          <nuxt-link v-if="this.$route.path !== '/'" to="/">
-            <v-toolbar-title v-text="title.toUpperCase()" />
-          </nuxt-link>
+      <v-container class="header__container">
+        <v-row align="center">
+          <v-toolbar-title
+            v-text="storeInfo.logo.toUpperCase()"
+            v-if="this.$route.path !== '/'"
+            @click="toToppage"
+            class="font-italic font-weight-light"
+          />
           <v-spacer />
           <v-btn
             @click.stop="rightDrawer = !rightDrawer"
             icon
           >
-            <v-icon :color="color">
+            <v-icon :color="storeInfo.conceptColor">
               mdi-menu
             </v-icon>
           </v-btn>
@@ -56,35 +59,88 @@
     </v-navigation-drawer>
     <v-footer
       v-if="$route.path !== '/'"
-      :color="color"
+      :color="storeInfo.conceptColor"
     >
-      <v-container>
-        <v-row>
-          <v-col cols="12" md="4">
-            <v-row>
+      <v-container
+        tag="section"
+        class="footer__container"
+      >
+        <v-row
+          justify="center"
+          align="center"
+          class="footer__container__row"
+        >
+          <v-col
+            cols="12"
+            md="4"
+            tag="section"
+            class="footer__container__row__contact"
+          >
+            <v-row
+              justify="center"
+              align="center"
+              class="footer__container__row__contact__sns justify-md-start pb-5"
+            >
               <v-col
-                v-for="item in snsIcons"
+                v-for="(item, index) in snsIcons"
                 :key="item.name"
-                cols="4"
+                cols="2"
+                class="footer__container__row__contact__sns__icon"
               >
                 <v-img
                   :src="item.src"
+                  @click="toSNS(index)"
                   height="30"
                   width="30"
+                  class="mx-auto"
                 />
               </v-col>
             </v-row>
-            <p>Tel</p>
-            <p>Email</p>
+            <v-row class="footer__container__row__contact__wrapper">
+              <v-col
+                v-text="`Tel: ${storeInfo.telNum}`"
+                tag="p"
+                cols="12"
+                class="text-center text-md-left footer__container__row__contact__wrapper_tel pa-0"
+              />
+              <v-col
+                v-text="`Email: ${storeInfo.email}`"
+                tag="p"
+                cols="12"
+                class="text-center text-md-left footer__container__row__contact__wrapper_email pa-0"
+              />
+            </v-row>
           </v-col>
+          <v-col
+            @click="toToppage"
+            v-text="storeInfo.logo.toUpperCase()"
+            cols="10"
+            md="4"
+            tag="h1"
+            class="mx-auto text-center display-4 font-italic font-weight-light footer__container__row__logo"
+          />
           <v-col cols="12" md="4">
-            <h3>{{ title }}</h3>
-          </v-col>
-          <v-col cols="12" md="4">
-            <p>17:00〜25:00(月曜定休)</p>
-            <p>〒〇〇○-○○○○</p>
-            <p>〇〇県〇〇市〇〇</p>
-            <p>〇丁目〇番地〇</p>
+            <v-row>
+              <v-col
+                v-text="`${storeInfo.openingTime}(${storeInfo.closedDay}定休)`"
+                tag="p"
+                class="text-center text-md-right"
+              />
+            </v-row>
+            <v-row>
+              <v-col
+                v-text="`〒${storeInfo.postNum}`"
+                cols="12"
+                tag="p"
+                class="text-center text-md-right pa-0"
+              />
+              <v-col
+                v-text="storeInfo.address"
+                cols="12"
+                tag="p"
+                class="text-center text-md-right pa-0"
+              />
+            </v-row>
           </v-col>
         </v-row>
       </v-container>
@@ -105,8 +161,6 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      color: '#EC5016',
-      title: 'logo',
       snsIcons: [
         {
           name: 'line',
@@ -127,9 +181,12 @@ export default {
     }
   },
   computed: {
-    pages () {
-      return this.$store.getters.getPages
-    }
+    pages () { return this.$store.getters.getPages },
+    storeInfo () { return this.$store.getters.getStoreInfo }
+  },
+  methods: {
+    toSNS (num) { return this.$router.push(this.snsIcons[num].url) },
+    toToppage () { return this.$router.push('/') }
   }
 }
 </script>
@@ -139,25 +196,45 @@ a, a:hover {
   text-decoration: none;
 }
 #app{
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
+  &::before {
+    content: "";
+    background: url('../assets/images/wine-541922_1920.svg') no-repeat center center;
+    background-size: cover;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    transform: translateZ(0);
+  }
   .v-toolbar{
     color: $concept-color;
     &__title{
-      color: $concept-color
+      color: $concept-color;
+      cursor: pointer;
     }
   }
-}
-#app::before {
-  content: "";
-  background: url('../assets/images/wine-541922_1920.svg') no-repeat center center;
-  background-size: cover;
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  transform: translateZ(0);
+  .footer__container{
+    &__row{
+      color: #333;
+      &__contact{
+        &__sns{
+          &__icon{
+            .v-image{
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      &__logo{
+        cursor: pointer;
+        color: $concept-color;
+        filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.6));
+      }
+    }
+  }
 }
 </style>
