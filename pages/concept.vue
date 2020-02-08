@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="concept px-md-0">
+  <v-container class="concept px-md-0">
     <v-row class="mb-5 justify-center concept__title">
       <v-col
         v-text="title.toUpperCase()"
@@ -14,11 +14,11 @@
       align="center"
       class="flex-column flex-md-row mb-5"
     >
-      <v-col :class="{'order-md-2': n%2===0}" md="6" class="px-0 px-md-3">
-        <v-col v-text="concept.title + n" tag="h2" cols="12" class="px-0" />
+      <v-col :class="{'order-md-2': n%2===0}" md="6">
+        <v-col v-text="concept.title + n" tag="h2" cols="12" />
         <v-col v-text="concept.content" tag="p" cols="12" class="px-0 ma-0" />
       </v-col>
-      <v-col md="6" class="pa-0 px-md-3">
+      <v-col md="6">
         <v-img
           :src="n%2===0?interiorImg2:interiorImg1"
           alt="interior"

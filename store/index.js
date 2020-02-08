@@ -127,7 +127,8 @@ export const state = () => ({
     postNum: '〇〇〇-〇〇〇〇',
     address: '〇〇県〇〇市〇〇 〇丁目〇番地〇',
     telNum: '〇〇〇-〇〇〇〇-〇〇〇〇',
-    email: '〇〇〇〇@email.com'
+    email: '〇〇〇〇@email.com',
+    access: '〇〇駅より徒歩〇分'
   }
 })
 

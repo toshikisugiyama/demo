@@ -1,26 +1,53 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-container fluid class="news">
-      <v-row class="mb-5 justify-center news__title">
-        <h1>{{ title.toUpperCase() }}</h1>
-      </v-row>
-      <section class="news__contents">
-        <h2 class="news__contents__title">
-          {{ news[articleId - 1].title }}
-        </h2>
-        <p class="news__contents__date">
-          {{ news[articleId - 1].date }}
-        </p>
-        <p class="news__contents__contents">
-          {{ news[articleId - 1].contents }}
-        </p>
-      </section>
-    </v-container>
-  </v-layout>
+  <v-container tag="section" class="news px-md-0">
+    <v-row class="mb-5 justify-center news__title">
+      <v-col
+        v-text="title.toUpperCase()"
+        tag="h1"
+        class="text-center mb-5"
+      />
+    </v-row>
+    <v-row class="news_contents">
+      <v-col
+        v-text="news[articleId - 1].title"
+        tag="h2"
+        cols="12"
+        class="news__contents__title"
+      />
+      <v-col
+        v-text="news[articleId - 1].date"
+        tag="p"
+        cols="12"
+        class="news__contents__date text-right"
+      />
+      <v-col
+        v-text="news[articleId - 1].contents"
+        tag="p"
+        cols="12"
+        class="news__contents__contents"
+      />
+    </v-row>
+    <v-row class="py-5" justify="space-between">
+      <v-col
+        cols="4"
+        md="2"
+        class="pa-0"
+      >
+        <v-btn
+          @click="goBack"
+          :color="storeInfo.conceptColor"
+          tile
+          large
+          text
+        >
+          <v-icon>
+            mdi-arrow-left
+          </v-icon>
+          back
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -32,9 +59,11 @@ export default {
     }
   },
   computed: {
-    news () {
-      return this.$store.getters.getNews
-    }
+    news () { return this.$store.getters.getNews },
+    storeInfo () { return this.$store.getters.getStoreInfo }
+  },
+  methods: {
+    goBack () { this.$router.go(-1) }
   }
 }
 </script>
@@ -44,11 +73,6 @@ export default {
   &__title {
     h1{
       color: $concept-color;
-    }
-  }
-  &__contents{
-    &__date {
-      text-align: right;
     }
   }
 }
