@@ -84,15 +84,15 @@
               <v-col
                 v-for="(item, index) in snsIcons"
                 :key="item.name"
-                cols="2"
-                class="footer__container__row__contact__sns__icon"
+                cols="3"
+                class="footer__container__row__contact__sns__icon pa-0"
               >
                 <v-img
                   :src="item.src"
                   @click="toSNS(index)"
                   height="30"
                   width="30"
-                  class="mx-auto"
+                  class="mx-auto ml-md-0"
                 />
               </v-col>
             </v-row>
@@ -125,7 +125,7 @@
               <v-col
                 v-text="`${storeInfo.openingTime}(${storeInfo.closedDay}定休)`"
                 tag="p"
-                class="text-center text-md-right"
+                class="text-center text-md-right pr-md-0"
               />
             </v-row>
             <v-row>
@@ -193,23 +193,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@mixin background(){
+  content: "";
+  background-size: cover;
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  transform: translateZ(0);
+}
 a, a:hover {
   text-decoration: none;
 }
 #app{
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0);
   &::before {
-    content: "";
     background: url('../assets/images/wine-541922_1920.svg') no-repeat center center;
-    background-size: cover;
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    transform: translateZ(0);
+    @include background;
+  }
+  &::after{
+    background-color: rgba(0, 0, 0, 0.6);
+    @include background;
   }
   .v-toolbar{
     color: $concept-color;
@@ -220,7 +227,7 @@ a, a:hover {
   }
   .footer__container{
     &__row{
-      color: #333;
+      color: #000;
       &__contact{
         &__sns{
           &__icon{
