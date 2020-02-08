@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="concept px-md-0">
+  <v-container class="concept px-md-0">
     <v-row class="mb-5 justify-center concept__title">
       <v-col
         v-text="title.toUpperCase()"

@@ -7,7 +7,7 @@
       app
       flat
     >
-      <v-container class="header__container">
+      <v-container class="header__container pa-0">
         <v-row align="center">
           <v-col cols="6" md="2">
             <v-toolbar-title
@@ -30,9 +30,7 @@
       </v-container>
     </v-app-bar>
     <v-content>
-      <v-container>
-        <nuxt />
-      </v-container>
+      <nuxt />
     </v-content>
     <v-navigation-drawer
       v-model="rightDrawer"

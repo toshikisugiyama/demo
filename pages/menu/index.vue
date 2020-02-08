@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="menu px-md-0">
+  <v-container class="menu px-md-0">
     <v-row class="mb-5 justify-center menu__title">
       <v-col
         v-text="title.toUpperCase()"
@@ -38,24 +38,25 @@
       <v-col
         v-for="n in 2"
         :key="n"
-        @click="moveTo(n%2!==0?'/concept':'/news')"
-        :color="storeInfo.conceptColor"
         cols="4"
         md="2"
-        tag="v-btn"
-        tile
-        large
-        icon
-        flex
         class="pa-0"
       >
-        <v-icon v-if="n%2!==0">
-          mdi-arrow-left
-        </v-icon>
-        {{ n%2!==0?'concept':'news' }}
-        <v-icon v-if="n%2===0">
-          mdi-arrow-right
-        </v-icon>
+        <v-btn
+          @click="moveTo(n%2!==0?'/concept':'/news')"
+          :color="storeInfo.conceptColor"
+          tile
+          large
+          text
+        >
+          <v-icon v-if="n%2!==0">
+            mdi-arrow-left
+          </v-icon>
+          {{ n%2!==0?'concept':'news' }}
+          <v-icon v-if="n%2===0">
+            mdi-arrow-right
+          </v-icon>
+        </v-btn>
       </v-col>
     </v-row>
   </v-container>
