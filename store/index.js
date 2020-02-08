@@ -47,21 +47,25 @@ export const state = () => ({
   ],
   menus: [
     {
+      id: 1,
       name: 'drink',
       src: drinkImg,
       path: '/menu/drink'
     },
     {
+      id: 2,
       name: 'pasta',
       src: pastaImg,
       path: '/menu/pasta'
     },
     {
+      id: 3,
       name: 'rice',
       src: riceImg,
       path: '/menu/rice'
     },
     {
+      id: 4,
       name: 'dessert',
       src: dessertImg,
       path: '/menu/dessert'

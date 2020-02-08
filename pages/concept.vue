@@ -1,32 +1,55 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-container fluid class="concept">
-      <v-row class="mb-5 justify-center concept__title">
-        <v-col v-text="title.toUpperCase()" tag="h1" class="text-center" />
-      </v-row>
-      <v-row
+  <v-container fluid class="concept px-md-0">
+    <v-row class="mb-5 justify-center concept__title">
+      <v-col
+        v-text="title.toUpperCase()"
+        tag="h1"
+        class="text-center mb-5"
+      />
+    </v-row>
+    <v-row
+      v-for="n in 2"
+      :key="n"
+      tag="section"
+      align="center"
+      class="flex-column flex-md-row mb-5"
+    >
+      <v-col :class="{'order-md-2': n%2===0}" md="6" class="px-0 px-md-3">
+        <v-col v-text="concept.title + n" tag="h2" cols="12" class="px-0" />
+        <v-col v-text="concept.content" tag="p" cols="12" class="px-0 ma-0" />
+      </v-col>
+      <v-col md="6" class="pa-0 px-md-3">
+        <v-img
+          :src="n%2===0?interiorImg2:interiorImg1"
+          alt="interior"
+        />
+      </v-col>
+    </v-row>
+    <v-row class="py-5" justify="space-between">
+      <v-col
         v-for="n in 2"
         :key="n"
-        tag="section"
-        class="flex-column flex-md-row mb-5"
+        @click="moveTo(n%2!==0?'/':'/menu')"
+        :color="storeInfo.conceptColor"
+        cols="3"
+        md="2"
+        tag="v-btn"
+        tile
+        large
+        icon
+        flex
+        class="pa-0"
       >
-        <v-col :class="{'order-md-2': n%2===0}" md="6">
-          <v-col v-text="concept.title + n" tag="h2" class="12" />
-          <v-col v-text="concept.content" tag="p" cols="12" />
-        </v-col>
-        <v-col md="6">
-          <v-img
-            :src="n%2===0?interiorImg2:interiorImg1"
-            alt="interior"
-          />
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-layout>
+        <v-icon v-if="n%2!==0">
+          mdi-arrow-left
+        </v-icon>
+        {{ n%2!==0?'top':'menu' }}
+        <v-icon v-if="n%2===0">
+          mdi-arrow-right
+        </v-icon>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -43,6 +66,12 @@ export default {
         content: 'ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。ここに店のコンセプトが入る。'
       }
     }
+  },
+  computed: {
+    storeInfo () { return this.$store.getters.getStoreInfo }
+  },
+  methods: {
+    moveTo (path) { this.$router.push(path) }
   }
 }
 </script>
