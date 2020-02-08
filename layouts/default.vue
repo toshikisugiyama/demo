@@ -9,12 +9,14 @@
     >
       <v-container class="header__container">
         <v-row align="center">
-          <v-toolbar-title
-            v-text="storeInfo.logo.toUpperCase()"
-            v-if="this.$route.path !== '/'"
-            @click="toToppage"
-            class="font-italic font-weight-light"
-          />
+          <v-col cols="6" md="2">
+            <v-toolbar-title
+              v-text="storeInfo.logo.toUpperCase()"
+              v-if="this.$route.path !== '/'"
+              @click="toToppage"
+              class="font-italic font-weight-light"
+            />
+          </v-col>
           <v-spacer />
           <v-btn
             @click.stop="rightDrawer = !rightDrawer"
@@ -114,7 +116,8 @@
           <v-col
             @click="toToppage"
             v-text="storeInfo.logo.toUpperCase()"
-            cols="10"
+            cols="12"
+            sm="10"
             md="4"
             tag="h1"
             class="mx-auto text-center display-4 font-italic font-weight-light footer__container__row__logo"

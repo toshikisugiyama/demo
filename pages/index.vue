@@ -18,13 +18,10 @@
 <script>
 export default {
   computed: {
-    title () { return this.$store.getters.getTitle },
     storeInfo () { return this.$store.getters.getStoreInfo }
   },
   methods: {
-    toConcept () {
-      this.$router.push('/concept')
-    }
+    toConcept () { this.$router.push('/concept') }
   }
 }
 </script>
