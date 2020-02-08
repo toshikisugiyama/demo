@@ -29,24 +29,25 @@
       <v-col
         v-for="n in 2"
         :key="n"
-        @click="moveTo(n%2!==0?'/':'/menu')"
-        :color="storeInfo.conceptColor"
-        cols="3"
+        cols="4"
         md="2"
-        tag="v-btn"
-        tile
-        large
-        icon
-        flex
         class="pa-0"
       >
-        <v-icon v-if="n%2!==0">
-          mdi-arrow-left
-        </v-icon>
-        {{ n%2!==0?'top':'menu' }}
-        <v-icon v-if="n%2===0">
-          mdi-arrow-right
-        </v-icon>
+        <v-btn
+          @click="moveTo(n%2!==0?'/':'/menu')"
+          :color="storeInfo.conceptColor"
+          tile
+          large
+          text
+        >
+          <v-icon v-if="n%2!==0">
+            mdi-arrow-left
+          </v-icon>
+          {{ n%2!==0?'top':'menu' }}
+          <v-icon v-if="n%2===0">
+            mdi-arrow-right
+          </v-icon>
+        </v-btn>
       </v-col>
     </v-row>
   </v-container>
