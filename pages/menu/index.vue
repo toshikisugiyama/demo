@@ -11,7 +11,7 @@
       <v-col
         v-for="menu in menus"
         :key="menu.name"
-        :class="{'order-md-4': menu.id===3}"
+        :class="orderForMd(menu.id)"
         cols="12"
         md="6"
         class="menu__contents__item"
@@ -72,7 +72,12 @@ export default {
     storeInfo () { return this.$store.getters.getStoreInfo }
   },
   methods: {
-    moveTo (path) { this.$router.push(path) }
+    moveTo (path) { this.$router.push(path) },
+    orderForMd (id) {
+      if (id % 4 === 3) {
+        return 'order-md-' + Number(id + 1)
+      }
+    }
   }
 }
 </script>
