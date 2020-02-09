@@ -1,5 +1,5 @@
 <template>
-  <v-container class="news">
+  <v-container tag="section" class="news">
     <v-row class="mb-5 justify-center news__title">
       <v-col
         v-text="title.toUpperCase()"
@@ -7,7 +7,7 @@
         class="text-center mb-5"
       />
     </v-row>
-    <v-row tag="section">
+    <v-row class="news__contents">
       <v-col v-if="news" class="pa-0">
         <v-list
           three-line
@@ -37,6 +37,7 @@
       <v-col
         v-for="n in 2"
         :key="n"
+        :class="{'text-right': n%2===0}"
         cols="4"
         md="2"
         class="pa-0"

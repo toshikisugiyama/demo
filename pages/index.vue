@@ -2,6 +2,7 @@
   <v-row
     justify="center"
     align="center"
+    tag="section"
     class="toppage"
   >
     <v-col
