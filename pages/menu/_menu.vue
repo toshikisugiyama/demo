@@ -1,5 +1,5 @@
 <template>
-  <v-container class="menu px-md-0">
+  <v-container tag="section" class="menu px-md-0">
     <v-row class="mb-5 justify-center menu__title">
       <v-col
         v-text="currentMenu.toUpperCase()"
@@ -7,7 +7,7 @@
         class="text-center mb-5"
       />
     </v-row>
-    <v-row tag="section">
+    <v-row class="menu__contents">
       <v-col cols="12" class="pa-0">
         <v-list
           v-if="currentMenu == 'drink'"

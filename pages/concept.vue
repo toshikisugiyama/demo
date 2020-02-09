@@ -1,5 +1,5 @@
 <template>
-  <v-container class="concept px-md-0">
+  <v-container tag="section" class="concept px-md-0">
     <v-row class="mb-5 justify-center concept__title">
       <v-col
         v-text="title.toUpperCase()"
@@ -10,9 +10,8 @@
     <v-row
       v-for="n in 2"
       :key="n"
-      tag="section"
       align="center"
-      class="flex-column flex-md-row mb-5"
+      class="flex-column flex-md-row mb-5 concept__contents"
     >
       <v-col :class="{'order-md-2': n%2===0}" md="6">
         <v-col v-text="concept.title + n" tag="h2" cols="12" />
@@ -29,6 +28,7 @@
       <v-col
         v-for="n in 2"
         :key="n"
+        :class="{'text-right': n%2===0}"
         cols="4"
         md="2"
         class="pa-0"

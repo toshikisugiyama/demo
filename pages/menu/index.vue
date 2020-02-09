@@ -1,5 +1,5 @@
 <template>
-  <v-container class="menu px-md-0">
+  <v-container tag="section" class="menu px-md-0">
     <v-row class="mb-5 justify-center menu__title">
       <v-col
         v-text="title.toUpperCase()"
@@ -7,10 +7,7 @@
         class="text-center mb-5"
       />
     </v-row>
-    <v-row
-      class="menu__contents"
-      tag="section"
-    >
+    <v-row class="menu__contents">
       <v-col
         v-for="menu in menus"
         :key="menu.name"
@@ -38,6 +35,7 @@
       <v-col
         v-for="n in 2"
         :key="n"
+        :class="{'text-right': n%2===0}"
         cols="4"
         md="2"
         class="pa-0"

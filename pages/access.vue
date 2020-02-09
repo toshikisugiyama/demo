@@ -1,5 +1,5 @@
 <template>
-  <v-container class="access px-md-0">
+  <v-container tag="section" class="access px-md-0">
     <v-row class="mb-5 justify-center access__title">
       <v-col
         v-text="title.toUpperCase()"
@@ -7,18 +7,17 @@
         class="text-center mb-5"
       />
     </v-row>
-    <v-row tag="section">
+    <v-row class="access__contents">
       <v-col
         v-text="storeInfo.access"
         tag="p"
         cols="12"
-        class="ma-0 pa-0"
+        class="mb-0"
       />
       <v-col
         v-text="`${storeInfo.openingTime}(${storeInfo.closedDay}定休)`"
         tag="p"
         cols="12"
-        class="ma-0 pa-0 mb-5"
       />
       <v-col cols="12" class="ma-0 pa-0">
         <v-parallax src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg" />
@@ -28,6 +27,7 @@
       <v-col
         v-for="n in 2"
         :key="n"
+        :class="{'text-right': n%2===0}"
         cols="4"
         md="2"
         class="pa-0"
